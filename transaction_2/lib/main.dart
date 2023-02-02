@@ -8,11 +8,13 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(TransactionAdapter());
   await Hive.openBox("Transaction");
+  //await Hive.box("Transaction").clear;
 
-  //Hive.box("Transactions").clear;
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: HomeScreen(),
-    // theme: ThemeData.dark(),
-  ));
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+      // theme: ThemeData.dark(),
+    ),
+  );
 }

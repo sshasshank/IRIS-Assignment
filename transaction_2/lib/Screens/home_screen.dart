@@ -6,8 +6,7 @@ import 'package:transaction_2/Widgets/transaction_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
-  
-  const HomeScreen({ super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -16,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    //Layout of Home Screen
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -30,9 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView(
         children: [
+          //I will add some chart later on
+
           const Text('Chart', style: TextStyle(fontFamily: 'AmaticSC')),
           const SizedBox(height: 396),
-          //const AddTransaction(),
+
+          // Button to add transaction in the app
+
           ElevatedButton(
               onPressed: (() {
                 Navigator.of(context).push(
@@ -41,23 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               }),
-              
               child: const Icon(Icons.add)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             child: Text(
               'Recent Transactions',
               style: GoogleFonts.notoSerif(
-                  fontSize: 20, fontWeight: FontWeight.bold)
-              //TextStyle(fontSize: 25, fontWeight: FontWeight.bold,)
-              ,
+                  fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(
             height: 0,
           ),
           const TransactionList(),
-          //TransactionCard()
         ],
       ),
     );

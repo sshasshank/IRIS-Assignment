@@ -12,6 +12,8 @@ class AddTransaction extends StatefulWidget {
 }
 
 class _AddTransactionState extends State<AddTransaction> {
+  //refresh() is used for clearing the entered data from the text field when add is pressed
+
   void refresh() {
     print('check');
     HomeScreen();
@@ -19,25 +21,19 @@ class _AddTransactionState extends State<AddTransaction> {
     delete2.clear();
   }
 
-  // final Transaction info;
   String item = 'Some Expense';
   double amount = 0;
   var delete1 = TextEditingController();
   var delete2 = TextEditingController();
-  // @override
-  // void dispose() {
-  //   item.dispose();
-  //   amount.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
+    //Layout of the add transaction page
+
     return Scaffold(
       appBar: AppBar(title: const Text("Add Transactions")),
       body: Card(
         margin: const EdgeInsets.all(10),
-        //color: Colors.indigoAccent,
         elevation: 5,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
@@ -49,9 +45,14 @@ class _AddTransactionState extends State<AddTransaction> {
                 decoration: const InputDecoration(
                   labelText: "Item",
                 ),
+                //Storing the added input in a variable value
+                // which in turn stores the input in item
                 onChanged: (value) {
                   item = value;
                 },
+
+                //using delete2 variable to delete the added input after pressing add
+
                 controller: delete2,
               ),
               Container(
@@ -63,7 +64,13 @@ class _AddTransactionState extends State<AddTransaction> {
                 decoration: const InputDecoration(
                   labelText: "Amount",
                 ),
+
+                //Storing the added input in a variable value
+                // which in turn stores the input in item
+
                 onChanged: (value) {
+                  //using delete2 variable to delete the added input after pressing add
+
                   amount = double.tryParse(value) ?? 0;
                 },
                 controller: delete1,
@@ -73,16 +80,20 @@ class _AddTransactionState extends State<AddTransaction> {
               ),
               ElevatedButton(
                 onPressed: () {
+                  //Storing all the entered info in the hive box
+
                   Transaction transaction = Transaction(
                       item: item, currentdate: DateTime.now(), amount: amount);
                   transaction.storeInBox(transaction);
+
+                  //returning to the homescreen after pressing add
+
                   Navigator.of(context).pop(
                     MaterialPageRoute(builder: (context) => const HomeScreen()),
                   );
+                  //calling this function to remove all the entered inputs from the text field
 
                   refresh();
-
-                  //storeInBox(transaction);
                 },
                 child: const Text("Add", style: TextStyle(color: Colors.white)),
               )

@@ -14,11 +14,14 @@ class Transaction {
 
   Transaction(
       {required this.item, required this.currentdate, required this.amount});
+
+  //this function stores the input in a list which in turn is stored in a box
+
   storeInBox(Transaction show) async {
     var box = Hive.box("Transaction");
     List info = box.get('info', defaultValue: []);
     info.add(show);
     box.put('info', info);
-    //await box.deleteAll(box.keys);
+    // box.deleteAll(box.keys);
   }
 }

@@ -1,3 +1,6 @@
+//Page used to add information of the transaction
+
+
 import 'package:flutter/material.dart';
 import 'package:transaction_2/Widgets/add_transaction.dart';
 
