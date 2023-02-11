@@ -7,8 +7,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TransactionAdapter());
-  await Hive.openBox("Transaction");
-  //await Hive.box("Transaction").clear;
+  await Hive.openBox("Transaction1");
+  // await Hive.box("Transaction").clear;
 
   runApp(
     const MaterialApp(

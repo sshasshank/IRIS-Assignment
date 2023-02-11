@@ -19,17 +19,17 @@ class _TransactionListState extends State<TransactionList> {
   @override
   void initState() {
     super.initState();
-    var box = Hive.box("Transaction");
+    var box = Hive.box("Transaction1");
     infolist = box.get("info", defaultValue: []);
 
-    //Testing if Initstate is called every time if press add button
+    //Testing if Initstate is called every time I press add button
 
     print('Initstate');
   }
 
   @override
   Widget build(BuildContext context) {
-    //Testing if build is called every time if press add button
+    //Testing if build is called every time I press add button
 
     print('List');
 
@@ -71,8 +71,7 @@ class _TransactionListState extends State<TransactionList> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            //Printing the amount stored in the card using hive box
-
+                            //Printing the title stored in the card using hive box
                             Text((infolist[index] as Transaction).item,
                                 style: const TextStyle(
                                     fontFamily: 'AmaticSC',
@@ -84,7 +83,8 @@ class _TransactionListState extends State<TransactionList> {
                             Text(
                               //Adding date of the transaction
 
-                              DateFormat.yMMMd().format(DateTime.now()),
+                              DateFormat.yMMMd().format(
+                                  (infolist[index] as Transaction).currentdate),
                               style: const TextStyle(
                                 color: Colors.black54,
                                 fontSize: 12,

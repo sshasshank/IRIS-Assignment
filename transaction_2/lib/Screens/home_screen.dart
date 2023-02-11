@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:transaction_2/Screens/add_trans_page.dart';
-import 'package:transaction_2/Widgets/add_transaction.dart';
 import 'package:transaction_2/Widgets/transaction_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,8 +12,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  updateList() {
+    print('error');
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('rebuild');
+
     //Layout of Home Screen
 
     return Scaffold(
@@ -42,7 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: (() {
                 Navigator.of(context).push(
                   CupertinoPageRoute(
-                    builder: (context) => const AddTransactionPage(),
+                    builder: (context) =>
+                        AddTransactionPage(updateList: updateList),
                   ),
                 );
               }),
@@ -58,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 0,
           ),
-          const TransactionList(),
+          TransactionList(),
         ],
       ),
     );
