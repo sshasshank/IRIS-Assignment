@@ -13,13 +13,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   updateList() {
-    print('error');
+    print('update list is called');
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    print('rebuild');
+    print('Home screen is built');
 
     //Layout of Home Screen
 
@@ -39,33 +39,20 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           //I will add some chart later on
 
-          const Text('Chart', style: TextStyle(fontFamily: 'AmaticSC')),
-          const SizedBox(height: 396),
+          const Center(
+            child: Text('Chart',
+                style: TextStyle(fontSize: 20, fontFamily: 'AmaticSC')),
+          ),
+          const SizedBox(height: 0),
 
           // Button to add transaction in the app
 
-          ElevatedButton(
-              onPressed: (() {
-                Navigator.of(context).push(
-                  CupertinoPageRoute(
-                    builder: (context) =>
-                        AddTransactionPage(updateList: updateList),
-                  ),
-                );
-              }),
-              child: const Icon(Icons.add)),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: Text(
-              'Recent Transactions',
-              style: GoogleFonts.notoSerif(
-                  fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
           const SizedBox(
             height: 0,
           ),
-          TransactionList(),
+          Stack(children: [
+            const TransactionList(),
+          ]),
         ],
       ),
     );

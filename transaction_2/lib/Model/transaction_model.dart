@@ -18,7 +18,7 @@ class Transaction {
   //this function stores the input in a list which in turn is stored in a box
 
   storeInBox(Transaction show) async {
-    var box = Hive.box("Transaction1");
+    var box = Hive.box("Transaction3");
     List info = box.get('info', defaultValue: []);
     info.add(show);
     box.put('info', info);
